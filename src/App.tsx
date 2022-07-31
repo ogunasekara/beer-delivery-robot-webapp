@@ -13,15 +13,21 @@ import { DeliverPage } from "./components/DeliverPage";
 import { WaypointsPage } from "./components/WaypointsPage";
 import { StatePage } from "./components/StatePage";
 
+const pathRoot = "/beer-delivery-robot-webapp/";
+
+function constructPath(path: string) {
+  return pathRoot + path;
+}
+
 function App() {
   return <Router>
     <NavBar />
     <Routes>
-      <Route path="/connect" element={<ConnectPage />}/>
-      <Route path="/deliver" element={<DeliverPage />}/>
-      <Route path="/waypoints" element={<WaypointsPage />}/>
-      <Route path="/state" element={<StatePage />}/>
-      <Route path="*" element={<Navigate to="/connect" />}/>
+      <Route path={constructPath("connect")} element={<ConnectPage />}/>
+      <Route path={constructPath("deliver")} element={<DeliverPage />}/>
+      <Route path={constructPath("waypoints")} element={<WaypointsPage />}/>
+      <Route path={constructPath("state")} element={<StatePage />}/>
+      <Route path={constructPath("*")} element={<Navigate to="/connect" />}/>
     </Routes>
   </Router>;
 }
