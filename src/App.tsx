@@ -27,7 +27,7 @@ function App() {
       <Route path={constructPath("deliver")} element={<DeliverPage />}/>
       <Route path={constructPath("waypoints")} element={<WaypointsPage />}/>
       <Route path={constructPath("state")} element={<StatePage />}/>
-      <Route path={constructPath("*")} element={<Navigate to="/connect" />}/>
+      <Route path={constructPath("*")} element={<Navigate to={constructPath("connect")} />}/>
     </Routes>
   </Router>;
 }
