@@ -15,7 +15,7 @@ import { StatePage } from "./components/StatePage";
 
 const pathRoot = "/beer-delivery-robot-webapp/";
 
-function constructPath(path: string) {
+export function constructPath(path: string) {
   return pathRoot + path;
 }
 
