@@ -12,6 +12,7 @@ import { ConnectPage } from './components/ConnectPage';
 import { DeliverPage } from "./components/DeliverPage";
 import { WaypointsPage } from "./components/WaypointsPage";
 import { StatePage } from "./components/StatePage";
+import { useState } from "react";
 
 const pathRoot = "/beer-delivery-robot-webapp/";
 
@@ -20,13 +21,20 @@ export function constructPath(path: string) {
 }
 
 function App() {
+  const [rosClient, setRosClient] = useState(undefined);
+
+  const defaultProps = {
+    rosClient: rosClient,
+    setRosClient: setRosClient
+  };
+
   return <Router>
     <NavBar />
     <Routes>
-      <Route path={constructPath("connect")} element={<ConnectPage />}/>
+      <Route path={constructPath("connect")} element={<ConnectPage {...defaultProps} />}/>
       <Route path={constructPath("deliver")} element={<DeliverPage />}/>
       <Route path={constructPath("waypoints")} element={<WaypointsPage />}/>
-      <Route path={constructPath("state")} element={<StatePage />}/>
+      <Route path={constructPath("state")} element={<StatePage {...defaultProps} />}/>
       <Route path={constructPath("*")} element={<Navigate to={constructPath("connect")} />}/>
     </Routes>
   </Router>;
