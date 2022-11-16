@@ -11,22 +11,25 @@ export default function RobotState(props: any) {
 
         var odomListener = new ROSLIB.Topic({
             ros: rosClient,
-            name: '/tj2/odom',
-            messageType: 'nav_msgs/msg/Odometry'
+            name: '/bw/odom',
+            messageType: 'nav_msgs/Odometry'
         });
 
         const odomCallback = (msg: any) => {
             setRobotState([
-                msg.pose.pose.position.x,
-                msg.pose.pose.position.y,
-                msg.pose.pose.position.z
+                Math.round(Number(msg.pose.pose.position.x) * 100) / 100,
+                Math.round(Number(msg.pose.pose.position.y) * 100) / 100,
+                Math.round(Number(msg.twist.twist.angular.z) * 100) / 100
             ])
         };
 
         odomListener.subscribe(odomCallback);
 
+        console.log("Subscribed to robot topics.")
+
         return () => {
             odomListener.unsubscribe(odomCallback);
+            console.log("Unsubscribed from robot topics.")
         };
     }, [rosClient]);
 
