@@ -1,29 +1,31 @@
 # Beer Delivery Robot Webapp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains a client-facing webapp for controlling a beer delivery robot. Currently, support is limited to [bwbots-beer-caddy](https://github.com/Woz4tetra/bwbots-beer-caddy).
 
-## Available Scripts
+## Installation
+
+On the robot, ensure that ROS Noetic is installed and the [rosbridge-server](http://wiki.ros.org/rosbridge_server) package is installed.
+
+On the client, after cloning the repository, ensure that node is installed. This [tutorial](https://heynode.com/tutorial/install-nodejs-locally-nvm/) is a good way to do this using nvm.
 
 In the project directory, you can run:
 
-### `npm start`
+    $ git clone https://github.com/ogunasekara/beer-delivery-robot-webapp.git
+    $ cd beer-delivery-robot-webapp
+    $ npm install
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Local Debugging
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+To start a local deploy of the application, simply run:
 
-### `npm run deploy`
+    $ npm start
 
-Builds the app for production to the `build` folder and publishes to github pages.
+The first run will take some time, but afterwards it will be faster. This starts up a local server on [http://localhost:3000](http://localhost:3000) with the application.
 
-### `npm run build`
+## Publishing to Github Pages
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To deploy to github-pages, run:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    $ npm run deploy
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This builds the app for production to the `build` folder and publishes to github pages.
