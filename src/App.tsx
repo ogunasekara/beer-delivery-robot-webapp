@@ -22,10 +22,13 @@ export function constructPath(path: string) {
 
 function App() {
   const [rosClient, setRosClient] = useState(undefined);
+  const [waypoints, setWaypoints] = useState([]);
 
   const defaultProps = {
     rosClient: rosClient,
-    setRosClient: setRosClient
+    setRosClient: setRosClient,
+    waypoints: waypoints,
+    setWaypoints: setWaypoints
   };
 
   return <Router>
@@ -33,7 +36,7 @@ function App() {
     <Routes>
       <Route path={constructPath("connect")} element={<ConnectPage {...defaultProps} />}/>
       <Route path={constructPath("deliver")} element={<DeliverPage />}/>
-      <Route path={constructPath("waypoints")} element={<WaypointsPage />}/>
+      <Route path={constructPath("waypoints")} element={<WaypointsPage {...defaultProps} />}/>
       <Route path={constructPath("state")} element={<StatePage {...defaultProps} />}/>
       <Route path={constructPath("*")} element={<Navigate to={constructPath("connect")} />}/>
     </Routes>
